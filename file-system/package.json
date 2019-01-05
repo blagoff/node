@@ -1,0 +1,29 @@
+{
+  "name": "nauka_npm",
+  "version": "1.0.0",
+  "description": "Testowy plik packagejson",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blagoff/node.git"
+  },
+  "keywords": [
+    "nauka",
+    "npm",
+    "node"
+  ],
+  "author": "przemek",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blagoff/node/issues"
+  },
+  "homepage": "https://github.com/blagoff/node#readme",
+  "dependencies": {
+    "colors": "^1.3.3",
+    "stat-mode": "^0.2.2"
+  }
+}
