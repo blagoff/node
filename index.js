@@ -1,4 +1,13 @@
+var EventEmitter = require('events').EventEmitter;
+var emitter = new EventEmitter();
 var OSinfo = require('./modules/OSInfo');
+
+emitter.on('beforeCommand', function(instruction) {
+    console.log('You wrote: ' + instruction + ' trying to run command.')
+});
+emitter.on('afterCommand', function() {
+    console.log('Finished command');
+});
 
 process.stdin.setEncoding('utf-8');
 
@@ -7,6 +16,8 @@ process.stdin.on('readable', function() {
     if (input !== null) {
         var instruction = input.toString().trim();
         var OS = process.env.os;
+
+         emitter.emit('beforeCommand', instruction);
 
         switch(instruction)
         {
@@ -22,12 +33,6 @@ process.stdin.on('readable', function() {
             process.stdout.write(process.version);
 			break;
 
-			case '/os':
-
-            process.stdout.write('OS version \n');
-            process.stdout.write(OS);
-			break;
-
 			case '/sayhello':
             process.stdout.write('hello!\n');
             break;
@@ -37,11 +42,12 @@ process.stdin.on('readable', function() {
             OSinfo.print();
             break;
 
-
 			default:
 
 			process.stderr.write('Wrong instruction!');
         }
+
+        emitter.emit('afterCommand');
     }
 });
 

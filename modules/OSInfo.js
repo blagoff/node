@@ -21,8 +21,9 @@ function getOSinfo() {
     console.log('Home dir:', userInfo.homedir);
 
             
-    time.time();
+    time.time(uptime);
          
 }
 
 exports.print = getOSinfo;
+exports.uptime = getOSinfo.uptime;
